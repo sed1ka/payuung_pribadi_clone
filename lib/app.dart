@@ -11,7 +11,6 @@ class App extends StatelessWidget {
     final TransitionBuilder botToastBuilder = BotToastInit();
     return MaterialApp(
       title: 'Payuung Pribadi',
-
       theme: themeData(context),
       debugShowCheckedModeBanner: false,
       navigatorObservers: <NavigatorObserver>[
