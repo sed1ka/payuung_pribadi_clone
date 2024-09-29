@@ -1,24 +1,16 @@
 import 'package:equatable/equatable.dart';
 
+enum SuccessType {
+  load,
+  submit,
+}
+
 enum ErrorType {
-  noError,
   error,
-  requestTimeOut,
-  unAuth,
-  unstableInternet, // Unstable Internet Connection
-  noInternet, // Device not connected to Internet
-  cameraDenied,
-  cameraDeniedForever,
-  mediaAndFileDenied,
-  mediaAndFileDeniedForever,
-  ktpNotDetected,
-  kycBlacklisted,
-  kycFail,
-  limited,
+  emptyData,
   invalidSubmit,
-  locationServiceDisable,
-  locationPermissionDenied,
-  locationPermissionDeniedForefer,
+  askToResubmit,
+  requestTimeOut,
 }
 
 abstract class AppState extends Equatable {
@@ -42,10 +34,13 @@ class AppStateLoading extends AppState {
 }
 
 class AppStateSuccess extends AppState {
-  const AppStateSuccess();
+  final SuccessType successType;
+  final String? message;
+
+  const AppStateSuccess({this.successType = SuccessType.load, this.message});
 
   @override
-  List<Object?> get props => <Object>[];
+  List<Object?> get props => <Object>[successType, message ?? ''];
 }
 
 class AppStateError extends AppState {
@@ -54,10 +49,10 @@ class AppStateError extends AppState {
   final ErrorType errorType;
 
   const AppStateError(
-      this.message, {
-        required this.errorType,
-        this.detailMessage,
-      });
+    this.message, {
+    required this.errorType,
+    this.detailMessage,
+  });
 
   @override
   List<Object?> get props => <Object>[message, errorType, detailMessage ?? ''];
@@ -68,12 +63,12 @@ class AppStateError extends AppState {
 /// so the value of [doestnMatter] is ignored, but You need to passing different
 /// value not same like before for functional work
 class AppStateTrigger extends AppState {
-  final bool doesntMatter;
+  final bool triggerStateSwitch;
 
-  const AppStateTrigger(this.doesntMatter);
+  const AppStateTrigger(this.triggerStateSwitch);
 
   @override
-  List<Object?> get props => <Object>[doesntMatter];
+  List<Object?> get props => <Object>[triggerStateSwitch];
 }
 
 class AppStateTriggerDouble extends AppState {

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:payuung_pribadi_clone/commons/colors.dart';
 import 'package:payuung_pribadi_clone/utils/page_navigator.dart';
 
-class AppLoading extends StatelessWidget {
+class CustomLoading extends StatelessWidget {
   /// if you want to use loading with background
   /// use [KreduitLoading.withBackground] instead
-  const AppLoading({
+  const CustomLoading({
     super.key,
     this.color,
     this.backgroundColor,
@@ -37,7 +37,7 @@ class AppLoading extends StatelessWidget {
         _isOpenNotifier.value = true;
         return PopScope(
           canPop: !prevertBack,
-          child: Center(child: AppLoading.withBackground()),
+          child: Center(child: CustomLoading.withBackground()),
         );
       },
     ).whenComplete(() {
@@ -68,17 +68,20 @@ class AppLoading extends StatelessWidget {
       child: SizedBox(
         height: finalSize,
         width: finalSize,
-        child: const CircularProgressIndicator(),
+        child: const Padding(
+          padding: EdgeInsets.all(12),
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
 
-  factory AppLoading.withBackground({
+  factory CustomLoading.withBackground({
     Color? color,
     Color? backgroundColor,
     double? size,
   }) {
-    return AppLoading(
+    return CustomLoading(
       color: color,
       size: size,
       backgroundColor: backgroundColor ?? AppColors.white,

@@ -9,12 +9,44 @@ ThemeData themeData(BuildContext context, {bool useMaterial3 = true}) {
     highlightColor: AppColors.primary15,
     splashColor: AppColors.lightBlack15,
     hoverColor: AppColors.lightBlack15,
+    dividerColor: AppColors.grey,
+    dividerTheme: dividerThemeData(),
+    colorScheme: colorScheme(),
     appBarTheme: appBarTheme(),
     elevatedButtonTheme: elevatedButtonTheme(),
     checkboxTheme: checkboxThemeData(),
     textSelectionTheme: textSelectionThemeData(),
     inputDecorationTheme: outlineDecorationTheme(),
     textTheme: textTheme(),
+    datePickerTheme: DatePickerThemeData(
+      backgroundColor: AppColors.white,
+      dividerColor: AppColors.grey,
+      confirmButtonStyle: TextButton.styleFrom(
+        foregroundColor: AppColors.white,
+        backgroundColor: AppColors.primary
+      ),
+    ),
+  );
+}
+
+ColorScheme colorScheme() {
+  return const ColorScheme(
+    brightness: Brightness.light,
+    primary: AppColors.primary,
+    secondary: AppColors.primary,
+    surface: AppColors.white,
+    error: AppColors.red,
+    onPrimary: AppColors.white,
+    onError: AppColors.white,
+    onSecondary: AppColors.white,
+    onSurface: AppColors.lightBlack,
+  );
+}
+
+DividerThemeData dividerThemeData() {
+  return const DividerThemeData(
+    space: 30,
+    color: AppColors.grey,
   );
 }
 
@@ -109,7 +141,7 @@ InputDecorationTheme outlineDecorationTheme({
 }) {
   const BorderRadius borderRadius = BorderRadius.all(Radius.circular(8));
   OutlineInputBorder inputBorder = const OutlineInputBorder(
-    borderSide: BorderSide(color: AppColors.grey, width: 0.9),
+    borderSide: BorderSide(color: AppColors.darkGrey, width: 0.9),
     borderRadius: borderRadius,
   );
   OutlineInputBorder focusedInputBorder = const OutlineInputBorder(
@@ -132,7 +164,7 @@ InputDecorationTheme outlineDecorationTheme({
     filled: true,
     fillColor: WidgetStateColor.resolveWith((Set<WidgetState> state) {
       if (state.contains(WidgetState.disabled)) {
-        return AppColors.lightBlack15;
+        return AppColors.lightGrey;
       }
 
       return Colors.transparent;
@@ -148,7 +180,7 @@ InputDecorationTheme outlineDecorationTheme({
     disabledBorder: disableInputBorder,
     floatingLabelBehavior: FloatingLabelBehavior.auto,
     hintStyle: const TextStyle(
-      color: AppColors.lightBlack80,
+      color: AppColors.grey,
     ),
     labelStyle: WidgetStateTextStyle.resolveWith((Set<WidgetState> state) {
       if (state.contains(WidgetState.disabled)) {
@@ -158,28 +190,28 @@ InputDecorationTheme outlineDecorationTheme({
         );
       }
       return const TextStyle(
-        color: AppColors.grey,
+        color: AppColors.lightBlack80,
         fontSize: bodyLargeTextSize,
       );
     }),
     errorStyle: const TextStyle(
       color: AppColors.red,
-      fontSize: bodyMediumTextSize,
+      fontSize: bodySmallTextSize,
     ),
     floatingLabelStyle: const TextStyle(
-      color: AppColors.grey,
+      color: AppColors.lightBlack80,
       fontSize: bodyLargeTextSize,
     ),
     prefixStyle: const TextStyle(
-      color: AppColors.grey,
+      color: AppColors.darkGrey,
       fontSize: titleSmallTextSize,
     ),
     suffixIconColor: WidgetStateColor.resolveWith((Set<WidgetState> state) {
       if (state.contains(WidgetState.disabled)) {
-        return AppColors.lightGrey;
+        return AppColors.grey;
       }
 
-      return AppColors.grey;
+      return AppColors.darkGrey;
     }),
   );
 }
@@ -215,5 +247,14 @@ ProgressIndicatorThemeData progressIndicatorThemeData() {
     circularTrackColor: Colors.transparent,
     linearTrackColor: Colors.transparent,
     linearMinHeight: 2.2,
+  );
+}
+
+BoxShadow kBoxShadow({Color? color}) {
+  return BoxShadow(
+    color: color ?? AppColors.lightBlack80,
+    offset: const Offset(0, 1),
+    blurRadius: 0.5,
+    spreadRadius: 0,
   );
 }

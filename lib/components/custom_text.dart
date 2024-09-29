@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:payuung_pribadi_clone/commons/colors.dart';
 import 'package:payuung_pribadi_clone/commons/constants.dart';
 
-class AppText extends Text {
-  const AppText._(
+class CustomText extends Text {
+  const CustomText._(
     super.data, {
     super.key,
     super.textAlign,
@@ -15,7 +15,7 @@ class AppText extends Text {
   static const double bodyHeight = 1.38;
   static const double bodyWordSpacing = 1.45;
 
-  factory AppText.title(
+  factory CustomText.title(
     String data, {
     Key? key,
     bool italic = false,
@@ -32,7 +32,7 @@ class AppText extends Text {
     double? height,
     FontWeight? fontWeight,
   }) {
-    return AppText._(
+    return CustomText._(
       data,
       key: key,
       textAlign: textAlign,
@@ -51,7 +51,7 @@ class AppText extends Text {
     );
   }
 
-  factory AppText.body(
+  factory CustomText.body(
     String data, {
     Key? key,
     bool bold = false,
@@ -78,7 +78,7 @@ class AppText extends Text {
       }
     }
 
-    return AppText._(
+    return CustomText._(
       data,
       key: key,
       textAlign: textAlign,

@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:payuung_pribadi_clone/commons/colors.dart';
 import 'package:payuung_pribadi_clone/commons/constants.dart';
 import 'package:payuung_pribadi_clone/commons/device_measurement.dart';
-import 'package:payuung_pribadi_clone/components/app_text.dart';
+import 'package:payuung_pribadi_clone/components/custom_text.dart';
 
-/// use [AppSnackBar] for give the user general info.
+/// use [CustomSnackBar] for give the user general info.
 ///
 /// Need to be note use [KreduitToast] in only for system message info,
 /// example: "Text Copied"
-class AppSnackBar {
+class CustomSnackBar {
   static void _showSnackBar({
     required String message,
     String? title,
@@ -224,7 +224,7 @@ class _CustomSnackBar extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               if (title != null) ...[
-                                AppText.title(
+                                CustomText.title(
                                   title!,
                                   fontSize: bodyMediumTextSize,
                                   color: textColor ?? AppColors.lightBlack,
@@ -232,7 +232,7 @@ class _CustomSnackBar extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 2),
                               ],
-                              AppText.body(
+                              CustomText.body(
                                 message,
                                 fontSize: title == null
                                     ? bodyMediumTextSize

@@ -1,3 +1,5 @@
+import 'package:payuung_pribadi_clone/commons/device_measurement.dart';
+
 /// TEXT SIZE PROPERTIES
 const double headlineLargeTextSize = 29;
 const double headlineMediumTextSize = 26;
@@ -21,6 +23,21 @@ const double mediumIconSize = 20;
 const double smallIconSize = 16;
 
 /// APPBAR HEIGHT
-const double kAppBarHeight = 52;
+const double kAppBarHeight = 55;
 const double kAppBarSmallHeight = 48;
+
+/// TABBAR HEIGHT
+const double kTabBarHeight = 45;
+
+/// RTO Duration
+const Duration basicRTO = Duration(seconds: 30);
+const Duration mediumRTO = Duration(seconds: 10);
+
+/// EXPANDED HEIGHT
+const double kExpandedHeight = 100;
+
+const double kExpandedAndTabBarHeight = kTabBarHeight + kExpandedHeight;
+
+double modalBottomHeight =
+(kDeviceLogicalHeight - kDevicePadding.top - kAppBarHeight);
 

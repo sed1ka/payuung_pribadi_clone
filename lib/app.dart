@@ -2,6 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:payuung_pribadi_clone/commons/device_measurement.dart';
 import 'package:payuung_pribadi_clone/commons/themes.dart';
+import 'package:payuung_pribadi_clone/features/main_widget/main_widget.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -11,6 +12,7 @@ class App extends StatelessWidget {
     final TransitionBuilder botToastBuilder = BotToastInit();
     return MaterialApp(
       title: 'Payuung Pribadi',
+
       theme: themeData(context),
       debugShowCheckedModeBanner: false,
       navigatorObservers: <NavigatorObserver>[
@@ -39,7 +41,7 @@ class App extends StatelessWidget {
           child: child,
         );
       },
-      home: const SizedBox(),
+      home: const MainWidget(),
     );
   }
 }
